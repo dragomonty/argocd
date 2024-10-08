@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hybrid2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hybrid2
+  template:
+    metadata:
+      labels:
+        app: hybrid2
+    spec:
+      containers:
+      - name: hybrid2
+        image: mdragonetti/gsa
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred
+        
