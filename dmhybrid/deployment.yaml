@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: hybrid2
 spec:
-  replicas: 2  # El HPA ajustará esto automáticamente
+  replicas: 2  # El HPA ajustará este valor automáticamente
   selector:
     matchLabels:
       app: hybrid2
@@ -43,5 +43,10 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 50  # Escala cuando el uso esté por encima del 50%
-
+        averageUtilization: 85  # Escala hacia arriba si la CPU supera el 85%
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 40  # Escala hacia abajo si la CPU baja del 40%
