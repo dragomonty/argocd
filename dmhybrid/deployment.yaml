@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: hybrid2
 spec:
-  replicas: 1  # El HPA ajustará este valor automáticamente
+  replicas: 2  # El HPA ajustará este valor automáticamente
   selector:
     matchLabels:
       app: hybrid2
