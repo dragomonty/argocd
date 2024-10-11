@@ -43,10 +43,10 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 85  # Escala hacia arriba si la CPU supera el 85%
+        averageUtilization: 100  # Escala hacia arriba si la CPU supera el 100%
   - type: Resource
     resource:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 40  # Escala hacia abajo si la CPU baja del 40%
+        averageUtilization: 20  # Escala hacia abajo si la CPU baja del 20%
