@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: hybrid2
 spec:
-  replicas: 2
+  replicas: 2  # El HPA ajustará esto automáticamente
   selector:
     matchLabels:
       app: hybrid2
@@ -17,6 +17,31 @@ spec:
         image: mdragonetti/gsa
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: "250m"
+          limits:
+            cpu: "500m"
       imagePullSecrets:
       - name: regcred
-        
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hybrid2-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hybrid2
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50  # Escala cuando el uso esté por encima del 50%
+
