@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hybrid2
-        image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+        image: mdragonetti/gsa
         ports:
         - containerPort: 8080
         resources:
