@@ -2,14 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hybrid2-service
-  labels:
-    app: hybrid2
 spec:
-  type: NodePort  # Change from LoadBalancer to NodePort
-  ports:
-    - port: 8082    # Port that the service will expose internally
-      targetPort: 8080
-      nodePort: 32556  # Optional: specify a fixed NodePort
+  type: LoadBalancer
   selector:
     app: hybrid2
+  ports:
+  - protocol: TCP
+    port: 8082
+    targetPort: 8080
 
