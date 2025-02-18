@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  description: Creates a Basic Kubernetes Deployment
+  description: Creates a DM Hybrid Deployment
   name: basic
-  title: Create a Basic Deployment
+  title: Creates a DM Hybrid Deployment
 spec:
   owner: guests
   type: service
